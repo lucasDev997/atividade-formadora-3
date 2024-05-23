@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Encontra CEP
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,5 +13,36 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="cepNumber" (keyup)="eventHandler($event)">
+        <div slot="label">CEP <ion-text color="danger">(Necessário)</ion-text></div>
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="showTable">
+    <ion-grid>
+      <ion-row>
+        <ion-col>CEP:</ion-col>
+        <ion-col>{{cepInfo.cep}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Rua:</ion-col>
+        <ion-col>{{cepInfo.logradouro}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Bairro:</ion-col>
+        <ion-col>{{cepInfo.bairro}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>Cidade:</ion-col>
+        <ion-col>{{cepInfo.localidade}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>UF:</ion-col>
+        <ion-col>{{cepInfo.uf}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
